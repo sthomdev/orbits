@@ -2,8 +2,8 @@
 
 to run: 
 ```
-npm install
 npm install -D vite
+npx vite
 ```
 
 ![UI](UI_demo.png)
