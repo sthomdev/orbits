@@ -28,13 +28,18 @@ export function keplerToCartesian({ a, e, i, omega, w, v }) {
   }
 
   export function gpsToECEF(latitude, longitude, altitude = 0) {
-    const R = 6371; // Earth's radius in km
+    // Convert to radians
     const radLat = (latitude * Math.PI) / 180;
-    const radLon = (longitude * Math.PI) / 180;
-  
+    const radLon = (-longitude * Math.PI) / 180; // Negate longitude to match our coordinate system
+    const R = 6371; // Earth's radius in km
+
+    // ECEF coordinates
+    // X points towards prime meridian (lon = 0)
+    // Y points towards lon = 90°E
+    // Z points towards north pole
     const x = (R + altitude) * Math.cos(radLat) * Math.cos(radLon);
     const y = (R + altitude) * Math.cos(radLat) * Math.sin(radLon);
     const z = (R + altitude) * Math.sin(radLat);
-  
+
     return { x, y, z };
   }

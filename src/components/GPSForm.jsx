@@ -7,25 +7,49 @@ const GPSForm = ({ onSubmit }) => {
     const gps = Object.fromEntries(formData.entries());
     gps.latitude = parseFloat(gps.latitude);
     gps.longitude = parseFloat(gps.longitude);
-    gps.altitude = parseFloat(gps.altitude || 0); // Default altitude to 0 if not provided
+    gps.altitude = parseFloat(gps.altitude || 0);
     onSubmit(gps);
+    e.target.reset();
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ padding: '1rem' }}>
-      <label>
-        Latitude:
-        <input name="latitude" type="number" step="0.01" required />
-      </label>
-      <label>
-        Longitude:
-        <input name="longitude" type="number" step="0.01" required />
-      </label>
-      <label>
-        Altitude (km) [Optional]:
-        <input name="altitude" type="number" step="0.01" />
-      </label>
-      <button type="submit">Add GPS Landmark</button>
+    <form onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label htmlFor="latitude">Latitude (°N)</label>
+        <input
+          id="latitude"
+          name="latitude"
+          type="number"
+          step="0.0001"
+          placeholder="e.g. 40.7128"
+          required
+        />
+      </div>
+      
+      <div className="form-group">
+        <label htmlFor="longitude">Longitude (°E)</label>
+        <input
+          id="longitude"
+          name="longitude"
+          type="number"
+          step="0.0001"
+          placeholder="e.g. -74.0060"
+          required
+        />
+      </div>
+      
+      <div className="form-group">
+        <label htmlFor="altitude">Altitude (km)</label>
+        <input
+          id="altitude"
+          name="altitude"
+          type="number"
+          step="0.01"
+          placeholder="0"
+        />
+      </div>
+
+      <button type="submit">Add Landmark</button>
     </form>
   );
 };

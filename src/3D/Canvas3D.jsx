@@ -6,11 +6,12 @@ import Earth from './Earth';
 import EquatorialPlane from './EquatorialPlane';
 import AxialLines from './AxialLines';
 import LandmarkCone from './LandmarkCone'; // Import LandmarkCone
+import EquatorCircle from './EquatorCircle'; // Import EquatorCircle
 
 const Canvas3D = ({ orbits, landmarks, showEquatorialPlane, currentTime }) => {
   return (
     <Canvas
-      style={{ height: '100vh', width: '100vw' }}
+      style={{ height: '100%', width: '100%' }}
       camera={{ position: [0, 0, 20000], near: 0.1, far: 100000 }}
     >
       <ambientLight intensity={0.5} />
@@ -18,6 +19,7 @@ const Canvas3D = ({ orbits, landmarks, showEquatorialPlane, currentTime }) => {
       <OrbitControls enableZoom={true} maxDistance={50000} />
 
       <Earth />
+      <EquatorCircle />
 
       {showEquatorialPlane && <EquatorialPlane />}
       <AxialLines />
