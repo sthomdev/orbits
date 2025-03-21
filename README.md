@@ -6,4 +6,4 @@ npm install
 npm install -D vite
 ```
 
-![UI](UO_demo.png)
+![UI](UI_demo.png)
